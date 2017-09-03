@@ -36,6 +36,8 @@ defmodule EscalaWeb.Endpoint do
     key: "_escala_key",
     signing_salt: "If2XmF6J"
 
+  plug CORSPlug
+
   plug EscalaWeb.Router
 
   @doc """

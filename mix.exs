@@ -40,6 +40,9 @@ defmodule Escala.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
 
+      # 3rd-party library
+      {:cors_plug, "~> 1.4"},
+
       # test
       {:ex_machina, "~> 2.1", only: :test},
 
