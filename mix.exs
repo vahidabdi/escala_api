@@ -25,7 +25,7 @@ defmodule Escala.Mixfile do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "test/support", "test/factories"]
   defp elixirc_paths(_),     do: ["lib"]
 
   # Specifies your project dependencies.
@@ -38,7 +38,13 @@ defmodule Escala.Mixfile do
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+
+      # test
+      {:ex_machina, "~> 2.1", only: :test},
+
+      # dev
+      {:credo, "~> 0.8.6", only: :dev},
     ]
   end
 
