@@ -42,6 +42,7 @@ defmodule Escala.Mixfile do
 
       # 3rd-party library
       {:cors_plug, "~> 1.4"},
+      {:oauth2, "~> 0.9.1"},
 
       # test
       {:ex_machina, "~> 2.1", only: :test},
