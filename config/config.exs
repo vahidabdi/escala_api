@@ -22,6 +22,15 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+
+config :guardian, Guardian,
+  allowed_algos: ["HS512", "HS384"],
+  issuer: "Escala",
+  ttl: { 1, :year },
+  serializer: Escala.GuardianSerializer,
+  secret_key: "1VyYiQtshlM6GEeUxKF69ZO2Y9UfaS/kmeg/cU74w7UyqZFQAw+HKfkYAi33AkV1"
+
+
 config :escala, EscalaWeb.Gettext,
   default_locale: "fa"
 

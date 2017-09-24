@@ -8,18 +8,7 @@ defmodule Escala.Schema do
 
   query do
     field :current_user, :user do
-      resolve fn _, _ ->
-        {
-          :ok,
-          %{
-            email: "ok",
-            providers: [
-              "google",
-              "linkedin"
-            ]
-          }
-        }
-      end
+      resolve &Escala.Accounts.UserResolver.current_user/2
     end
   end
 

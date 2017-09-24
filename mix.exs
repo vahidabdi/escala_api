@@ -46,6 +46,7 @@ defmodule Escala.Mixfile do
       {:absinthe, "~> 1.3.2"},
       {:absinthe_plug, "~> 1.3.1"},
       {:absinthe_ecto, "~> 0.1.2"},
+      {:guardian, "~> 0.14.5"},
 
       # test
       {:ex_machina, "~> 2.1", only: :test},
