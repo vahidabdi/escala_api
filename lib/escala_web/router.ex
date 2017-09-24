@@ -8,4 +8,11 @@ defmodule EscalaWeb.Router do
   scope "/api", EscalaWeb do
     pipe_through :api
   end
+
+  forward "/graphql", Absinthe.Plug,
+    schema: Escala.Schema
+
+  forward "/graphiql", Absinthe.Plug.GraphiQL,
+    schema: Escala.Schema
+
 end
