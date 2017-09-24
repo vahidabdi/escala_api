@@ -1,4 +1,7 @@
 defmodule Escala.Schema.Type do
+  @moduledoc """
+  Graphql Type
+  """
   use Absinthe.Schema.Notation
 
   @desc "The user providers"

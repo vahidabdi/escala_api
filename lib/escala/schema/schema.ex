@@ -1,4 +1,7 @@
 defmodule Escala.Schema do
+  @moduledoc """
+  Graphql Schema
+  """
   use Absinthe.Schema
 
   import_types Escala.Schema.Type
