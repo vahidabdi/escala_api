@@ -101,4 +101,20 @@ defmodule Escala.Accounts.UserTest do
       assert updated_user.email == "email@example.com" # Doesn't change email
     end
   end
+
+  describe "find_or_create_user" do
+    test "creates a new user when user not found" do
+      params = %{email: "new_email@domain.com"}
+
+      {:ok, user} = Accounts.find_or_create_user(params)
+      assert user.email == "new_email@domain.com"
+    end
+
+    test "get a user from db when user exist" do
+      assert {:ok, user} = Accounts.find_or_create_user(%{email: "user@example.com"})
+      assert {:ok, find_user} = Accounts.find_or_create_user(%{email: "user@example.com"})
+
+      assert user.email == find_user.email
+    end
+  end
 end

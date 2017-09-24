@@ -7,6 +7,7 @@ defmodule Escala.Accounts do
   alias Ecto.UUID
   alias Escala.Repo
   alias Escala.Accounts.User
+  alias Escala.Accounts.Authentication
 
   @doc """
   Returns the list of users.
@@ -41,5 +42,21 @@ defmodule Escala.Accounts do
     user
     |> User.update_changeset(attrs)
     |> Repo.update()
+  end
+
+  @doc """
+  Finds or creates a new suer
+  """
+  def find_or_create_user(attrs) do
+    %User{}
+    |> User.changeset(attrs)
+    |> Repo.insert(on_conflict: :nothing)
+  end
+
+  @doc """
+  Login user
+  """
+  def login(provider: "google", code: code) do
+    Authentication.login("google", code)
   end
 end
