@@ -1,4 +1,7 @@
 defmodule EscalaWeb.Plug.Context do
+  @moduledoc """
+  Puts Authenticated user to context
+  """
   @behaviour Plug
   import Plug.Conn
 
