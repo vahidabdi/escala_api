@@ -48,9 +48,14 @@ defmodule Escala.Accounts do
   Finds or creates a new suer
   """
   def find_or_create_user(attrs) do
-    %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert(on_conflict: :nothing)
+    {:ok, user} =
+      %User{}
+      |> User.changeset(attrs)
+      |> Repo.insert(on_conflict: :nothing)
+    cond do
+      user.id == nil -> {:ok, Repo.get_by(User, email: attrs.email)}
+      true -> {:ok, user}
+    end
   end
 
   @doc """

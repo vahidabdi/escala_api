@@ -58,28 +58,11 @@ defmodule Escala.Accounts.UserTest do
       assert errors_on(changeset).email == ["has invalid format"]
     end
 
-    test "requires username to be at least 4 character" do
-      assert {:error, changeset} = create_user(%{username: "abc"})
-      assert errors_on(changeset).username == ["should be at least 4 character(s)"]
-    end
-
-    test "with invalid username format returns error" do
-      assert {:error, changeset} = create_user(%{username: "1vahid"})
-      assert errors_on(changeset).username == ["has invalid format"]
-    end
-
     test "with duplicate email returns error" do
       user_fixture(email: @valid_user.email)
 
       assert {:error, changeset} = create_user(@valid_user)
       assert errors_on(changeset).email == ["has already been taken"]
-    end
-
-    test "with duplicate username returns error" do
-      user_fixture(username: @valid_user.username)
-
-      assert {:error, changeset} = create_user(@valid_user)
-      assert errors_on(changeset).username == ["has already been taken"]
     end
   end
 
@@ -114,7 +97,7 @@ defmodule Escala.Accounts.UserTest do
       assert {:ok, user} = Accounts.find_or_create_user(%{email: "user@example.com"})
       assert {:ok, find_user} = Accounts.find_or_create_user(%{email: "user@example.com"})
 
-      assert user.email == find_user.email
+      assert user.id == find_user.id
     end
   end
 end

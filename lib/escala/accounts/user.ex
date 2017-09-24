@@ -6,7 +6,7 @@ defmodule Escala.Accounts.User do
   import Ecto.Changeset
   alias Escala.Accounts.User
 
-  @primary_key {:id, :binary_id, autogenerate: true}
+  @primary_key {:id, Ecto.UUID, read_after_writes: true}
   @timestamps_opts [type: :utc_datetime, usec: false]
 
   schema "account_users" do
@@ -23,13 +23,10 @@ defmodule Escala.Accounts.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:email, :username, :first_name, :last_name, :picture, :providers])
+    |> cast(attrs, [:email, :first_name, :last_name, :picture, :providers])
     |> validate_required([:email])
     |> validate_format(:email, ~r/\A.+@.+\..+\z/)
-    |> validate_format(:username, ~r/\A[a-zA-Z][a-zA-z_0-9]+\z/)
-    |> validate_length(:username, min: 4)
     |> unique_constraint(:email)
-    |> unique_constraint(:username)
   end
 
   def update_changeset(%User{} = user, attrs) do
