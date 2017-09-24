@@ -27,4 +27,12 @@ defmodule Escala.Schema.Type do
     @desc "list of providers"
     field :providers, list_of(:providers)
   end
+
+  @desc "User Session"
+  object :session do
+    @desc "user object"
+    field :user, :user
+    @desc "user token"
+    field :jwt, :string
+  end
 end

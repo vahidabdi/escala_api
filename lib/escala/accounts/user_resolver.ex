@@ -13,7 +13,11 @@ defmodule Escala.Accounts.UserResolver do
   end
 
   def login(%{provider: provider, code: code}, _) do
-    Accounts.login(provider: provider, code: code)
+    case Accounts.login(provider: provider, code: code) do
+      {:ok, user} ->
+        {:ok, jwt, _claims} = Guardian.encode_and_sign(user)
+        {:ok, %{user: user, jwt: jwt}}
+    end
   end
   def login(_, _) do
     {:error, "problem with login"}

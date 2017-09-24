@@ -13,7 +13,7 @@ defmodule Escala.Schema do
   end
 
   mutation do
-    field :login, :user do
+    field :login, :session do
       arg :provider, non_null(:string)
       arg :code, non_null(:string)
 
