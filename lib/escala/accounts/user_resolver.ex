@@ -17,6 +17,8 @@ defmodule Escala.Accounts.UserResolver do
       {:ok, user} ->
         {:ok, jwt, _claims} = Guardian.encode_and_sign(user)
         {:ok, %{user: user, jwt: jwt}}
+      {:error, msg} ->
+        {:error, msg}
     end
   end
   def login(_, _) do
