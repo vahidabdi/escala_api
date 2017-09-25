@@ -10,6 +10,10 @@ defmodule Escala.Schema do
     field :current_user, :user do
       resolve &Escala.Accounts.UserResolver.current_user/2
     end
+
+    field :surveys, list_of(:survey) do
+      resolve &Escala.CMS.SurveyResolver.list_surveys/2
+    end
   end
 
   mutation do

@@ -3,6 +3,7 @@ defmodule Escala.Schema.Type do
   Graphql Type
   """
   use Absinthe.Schema.Notation
+  use Absinthe.Ecto, repo: Escala.Repo
 
   @desc "The user providers"
   enum :providers do
@@ -34,5 +35,21 @@ defmodule Escala.Schema.Type do
     field :user, :user
     @desc "user token"
     field :jwt, :string
+  end
+
+  @desc "survey"
+  object :survey do
+    @desc "survey id"
+    field :id, :id
+    @desc "survey name"
+    field :name, :string
+    @desc "welcome"
+    field :welcome, :string
+    @desc "title"
+    field :title, :string
+    @desc "description"
+    field :description, :string
+    @desc "user"
+    field :user, :user, resolve: assoc(:user)
   end
 end
