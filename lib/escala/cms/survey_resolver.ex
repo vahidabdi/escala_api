@@ -3,11 +3,28 @@ defmodule Escala.CMS.SurveyResolver do
   Survey Resolver
   """
   alias Escala.CMS
+  alias Escala.Accounts
 
   def list_surveys(_, %{context: %{current_user: %{id: id}}}) do
-    {:ok, CMS.list_surveys(id)}
+    {:ok, CMS.list_user_surveys(id)}
   end
   def list_surveys(_, _) do
     {:error, "unauthorized"}
+  end
+
+  def create_survey(args, %{context: %{current_user: %{id: id}}}) do
+    user = Accounts.get_user(id)
+    case user do
+      nil -> {:error, "محوز ساخت پرسشنامه ندارید"}
+      user ->
+        args = Map.merge(args, %{user_id: id})
+        case CMS.create_survey(args) do
+          {:ok, survey} -> {:ok, survey}
+          {:error, _changeset} -> {:error, "خطا در ایجاد پرسشنامه"}
+        end
+    end
+  end
+  def create_survey(_, _) do
+    {:error, "محوز ساخت پرسشنامه ندارید"}
   end
 end

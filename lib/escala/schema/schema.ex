@@ -23,5 +23,14 @@ defmodule Escala.Schema do
 
       resolve &Escala.Accounts.UserResolver.login/2
     end
+
+    field :create_survey, :survey do
+      arg :name, non_null(:string)
+      arg :welcome, :string
+      arg :title, :string
+      arg :description, :string
+
+      resolve &Escala.CMS.SurveyResolver.create_survey/2
+    end
   end
 end

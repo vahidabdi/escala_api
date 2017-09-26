@@ -13,7 +13,7 @@ defmodule Escala.CMS do
   @doc """
   Returns the list of survey for user
   """
-  def list_surveys(id) do
+  def list_user_surveys(id) do
     Survey
     |> where([s], s.user_id == ^id)
     |> Repo.all()
