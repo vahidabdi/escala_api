@@ -11,6 +11,12 @@ defmodule Escala.Schema do
       resolve &Escala.Accounts.UserResolver.current_user/2
     end
 
+    field :survey, :survey do
+      arg :id, non_null(:id)
+
+      resolve &Escala.CMS.SurveyResolver.find/2
+    end
+
     field :surveys, list_of(:survey) do
       resolve &Escala.CMS.SurveyResolver.list_surveys/2
     end

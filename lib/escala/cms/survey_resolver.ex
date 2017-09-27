@@ -5,6 +5,17 @@ defmodule Escala.CMS.SurveyResolver do
   alias Escala.CMS
   alias Escala.Accounts
 
+  def find(%{id: id}, %{context: %{current_user: %{id: _user_id}}}) do
+    case CMS.get_survey(id) do
+      nil ->
+        {:error, "survey not found"}
+      survey -> {:ok, survey}
+    end
+  end
+  def find(_, _) do
+    {:error, "unauthorized"}
+  end
+
   def list_surveys(_, %{context: %{current_user: %{id: id}}}) do
     {:ok, CMS.list_user_surveys(id)}
   end
