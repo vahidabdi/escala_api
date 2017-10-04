@@ -20,6 +20,8 @@ defmodule EscalaWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       import EscalaWeb.Router.Helpers
+      import Escala.GraphqlHelper
+      import Escala.AuthenticatinHelper
 
       # The default endpoint for testing
       @endpoint EscalaWeb.Endpoint

@@ -5,6 +5,13 @@ defmodule Escala.CMS.SurveyResolver do
   alias Escala.CMS
   alias Escala.Accounts
 
+  def list_surveys(_, %{context: %{current_user: %{id: id}}}) do
+    {:ok, CMS.list_user_surveys(id)}
+  end
+  def list_surveys(_, _) do
+    {:error, "مجوز ندارید"}
+  end
+
   def find(%{id: id}, %{context: %{current_user: %{id: _user_id}}}) do
     case CMS.get_survey(id) do
       nil ->
@@ -13,14 +20,7 @@ defmodule Escala.CMS.SurveyResolver do
     end
   end
   def find(_, _) do
-    {:error, "unauthorized"}
-  end
-
-  def list_surveys(_, %{context: %{current_user: %{id: id}}}) do
-    {:ok, CMS.list_user_surveys(id)}
-  end
-  def list_surveys(_, _) do
-    {:error, "unauthorized"}
+    {:error, "مجوز ندارید"}
   end
 
   def create_survey(args, %{context: %{current_user: %{id: id}}}) do
