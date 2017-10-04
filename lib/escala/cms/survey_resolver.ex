@@ -27,7 +27,7 @@ defmodule Escala.CMS.SurveyResolver do
     user = Accounts.get_user(id)
     case user do
       nil -> {:error, "محوز ساخت پرسشنامه ندارید"}
-      user ->
+      _user ->
         args = Map.merge(args, %{user_id: id})
         case CMS.create_survey(args) do
           {:ok, survey} -> {:ok, survey}
