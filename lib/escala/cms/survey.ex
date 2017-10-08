@@ -11,7 +11,7 @@ defmodule Escala.CMS.Survey do
   @foreign_key_type Ecto.UUID
   @timestamps_opts [type: :utc_datetime, usec: false]
 
-  schema "cms_surveys" do
+  schema "surveys" do
     field :name, :string
     field :welcome, :string
     field :title, :string
