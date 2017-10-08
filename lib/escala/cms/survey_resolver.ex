@@ -23,16 +23,18 @@ defmodule Escala.CMS.SurveyResolver do
     {:error, "مجوز ندارید"}
   end
 
-  def create_survey(args, %{context: %{current_user: %{id: id}}}) do
-    user = Accounts.get_user(id)
-    case user do
-      nil -> {:error, "محوز ساخت پرسشنامه ندارید"}
-      _user ->
-        args = Map.merge(args, %{user_id: id})
-        case CMS.create_survey(args) do
-          {:ok, survey} -> {:ok, survey}
-          {:error, _changeset} -> {:error, "خطا در ایجاد پرسشنامه"}
-        end
+  def create_survey(%{input: args}, %{context: %{current_user: %{id: user_id}}}) do
+    with {:ok, survey_input} <- Map.fetch(args, :survey_input) do
+      user = Accounts.get_user(user_id)
+      case user do
+        nil -> {:error, "محوز ساخت پرسشنامه ندارید"}
+        _user ->
+          survey_input = Map.merge(survey_input, %{user_id: user_id})
+          case CMS.create_survey(survey_input) do
+            {:ok, survey} -> {:ok, survey}
+            {:error, _changeset} -> {:error, "خطا در ایجاد پرسشنامه"}
+          end
+      end
     end
   end
   def create_survey(_, _) do

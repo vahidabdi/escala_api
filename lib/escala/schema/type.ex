@@ -5,10 +5,17 @@ defmodule Escala.Schema.Type do
   use Absinthe.Schema.Notation
   use Absinthe.Ecto, repo: Escala.Repo
 
-  @desc "The user providers"
+  @desc "The oauth providers"
   enum :providers do
     value :google, as: "google", description: "Google"
     value :linkedin, as: "linkedin", description: "Linkedin"
+  end
+
+  @desc "Question type"
+  enum :question_type do
+    value :short_answer, as: "short answer", description: "Short answer"
+    value :long_answer, as: "long answer", description: "Long answer"
+    value :multiple_chioce, as: "Multiple Choice", description: "Multiple answer"
   end
 
   @desc "User profile"
@@ -51,5 +58,33 @@ defmodule Escala.Schema.Type do
     field :description, :string
     @desc "user"
     field :user, :user, resolve: assoc(:user)
+  end
+
+  # input objects
+  @desc "survey input"
+  input_object :survey_input do
+    field :name, non_null(:string)
+    field :welcome, :string
+    field :title, :string
+    field :description, :string
+  end
+
+  @desc "question options"
+  input_object :option_input do
+    field :option, non_null(:string)
+    field :value, :string
+  end
+
+  @desc "question input"
+  input_object :question_input do
+    field :question, non_null(:string)
+    field :question_type, non_null(:question_type)
+    field :options, list_of(:option_input)
+  end
+
+  @desc "create survey input"
+  input_object :create_survey_input do
+    field :survey_input, non_null(:survey_input)
+    field :question_input, list_of(:question_input)
   end
 end

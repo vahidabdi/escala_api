@@ -31,10 +31,7 @@ defmodule Escala.Schema do
     end
 
     field :create_survey, :survey do
-      arg :name, non_null(:string)
-      arg :welcome, :string
-      arg :title, :string
-      arg :description, :string
+      arg :input, non_null(:create_survey_input)
 
       resolve &Escala.CMS.SurveyResolver.create_survey/2
     end
