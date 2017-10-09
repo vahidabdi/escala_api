@@ -32,7 +32,7 @@ defmodule Escala.SurveyResolverTest do
   describe "query surveys" do
     test "returns list of current_user surveys" do
       user = insert(:account_user)
-      _survey = insert(:cms_survey, %{name: "sample survey", user: user})
+      _survey = insert(:survey, %{name: "sample survey", user: user})
 
       response =
         build_conn()
@@ -60,7 +60,7 @@ defmodule Escala.SurveyResolverTest do
   describe "query survey" do
     test "returns nil without authorization header" do
       user = insert(:account_user)
-      survey = insert(:cms_survey, %{name: "sample survey", user: user})
+      survey = insert(:survey, %{name: "sample survey", user: user})
 
       response =
         build_conn()
@@ -73,7 +73,7 @@ defmodule Escala.SurveyResolverTest do
 
     test "returns survey" do
       user = insert(:account_user)
-      survey = insert(:cms_survey, %{name: "sample survey", user: user})
+      survey = insert(:survey, %{name: "sample survey", user: user})
 
       response =
         build_conn()

@@ -4,12 +4,12 @@ defmodule Escala.CMS.SurveyTest do
   alias Escala.CMS
 
   def survey_fixture(attrs \\ %{}) do
-    insert(:cms_survey, attrs)
+    insert(:survey, attrs)
   end
 
   describe "list surveys" do
     test "returns all surveys" do
-      [_survey1, _survey2] = insert_pair(:cms_survey)
+      [_survey1, _survey2] = insert_pair(:survey)
 
       assert CMS.list_surveys |> length == 2
     end
@@ -17,7 +17,7 @@ defmodule Escala.CMS.SurveyTest do
 
   describe "get_user" do
     test "returns user with valid id" do
-      survey = insert(:cms_survey)
+      survey = insert(:survey)
 
       get_user = CMS.get_survey(survey.id)
 
