@@ -9,6 +9,7 @@ defmodule Escala.CMS do
   alias Ecto.UUID
   alias Escala.Repo
   alias Escala.CMS.Survey
+  alias Escala.CMS.Section
 
   @doc """
   Returns the list of survey for user
@@ -43,5 +44,16 @@ defmodule Escala.CMS do
     %Survey{}
     |> Survey.changeset(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+  Returns list of survey sections
+  """
+  def list_sections(survey_id) do
+    case UUID.cast survey_id do
+      {:ok, _} ->
+        Repo.all from s in Section, where: s.survey_id == ^survey_id
+      _ -> nil
+    end
   end
 end
