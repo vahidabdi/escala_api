@@ -14,6 +14,7 @@ defmodule Escala.CMS do
   alias Escala.CMS.OptionChoice
   alias Escala.CMS.InputType
   alias Escala.CMS.Question
+  alias Escala.CMS.QuestionOption
 
   @doc """
   Returns the list of survey for user
@@ -104,6 +105,17 @@ defmodule Escala.CMS do
   def create_question(attrs) do
     %Question{}
     |> Question.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  # QuestionOption
+
+  @doc """
+  creates question_option
+  """
+  def create_question_option(attrs) do
+    %QuestionOption{}
+    |> QuestionOption.changeset(attrs)
     |> Repo.insert()
   end
 end

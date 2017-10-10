@@ -10,6 +10,20 @@ defmodule Escala.CMSFactory do
         }
       end
 
+      def option_group_factory do
+        %Escala.CMS.OptionGroup{
+          name: "Rate 1-5",
+        }
+      end
+
+      def option_choice_factory do
+        %Escala.CMS.OptionChoice{
+          option_choice_name: "good",
+          option_choice_value: "5",
+          option_group: build(:option_group, user: build(:account_user))
+        }
+      end
+
       def section_factory do
         %Escala.CMS.Section{
           header: sequence("header"),
@@ -20,6 +34,14 @@ defmodule Escala.CMSFactory do
         %Escala.CMS.Survey{
           name: "sample survey",
           user: build(:account_user),
+        }
+      end
+
+      def question_factory do
+        %Escala.CMS.Question{
+          question_text: "what's your name",
+          input_type: build(:input_type),
+          section: build(:section, survey: build(:survey))
         }
       end
 
