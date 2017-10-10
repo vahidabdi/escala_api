@@ -1,4 +1,7 @@
 defmodule Escala.CMS.OptionGroup do
+  @moduledoc """
+  Option Group
+  """
   use Ecto.Schema
   import Ecto.Changeset
   alias Escala.CMS.OptionGroup
