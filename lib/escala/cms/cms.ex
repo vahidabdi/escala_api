@@ -12,6 +12,7 @@ defmodule Escala.CMS do
   alias Escala.CMS.Section
   alias Escala.CMS.OptionGroup
   alias Escala.CMS.OptionChoice
+  alias Escala.CMS.InputType
 
   @doc """
   Returns the list of survey for user
@@ -80,6 +81,17 @@ defmodule Escala.CMS do
   def create_option_choice(attrs) do
     %OptionChoice{}
     |> OptionChoice.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  # InputType
+
+  @doc """
+  creates input type
+  """
+  def create_input_type(attrs) do
+    %InputType{}
+    |> InputType.changeset(attrs)
     |> Repo.insert()
   end
 end
