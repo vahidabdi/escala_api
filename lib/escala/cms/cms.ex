@@ -10,6 +10,8 @@ defmodule Escala.CMS do
   alias Escala.Repo
   alias Escala.CMS.Survey
   alias Escala.CMS.Section
+  alias Escala.CMS.OptionGroup
+  alias Escala.CMS.OptionChoice
 
   @doc """
   Returns the list of survey for user
@@ -46,6 +48,8 @@ defmodule Escala.CMS do
     |> Repo.insert()
   end
 
+  # Section
+
   @doc """
   Returns list of survey sections
   """
@@ -55,5 +59,27 @@ defmodule Escala.CMS do
         Repo.all from s in Section, where: s.survey_id == ^survey_id
       _ -> nil
     end
+  end
+
+  # OptionGroup
+
+  @doc """
+  creates option group
+  """
+  def create_option_group(attrs) do
+    %OptionGroup{}
+    |> OptionGroup.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  # OptionChoice
+
+  @doc """
+  creates option choice
+  """
+  def create_option_choice(attrs) do
+    %OptionChoice{}
+    |> OptionChoice.changeset(attrs)
+    |> Repo.insert()
   end
 end
