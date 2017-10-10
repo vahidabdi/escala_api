@@ -3,6 +3,13 @@ defmodule Escala.CMSFactory do
 
   defmacro __using__(_opts) do
     quote do
+      def input_type_factory do
+        %Escala.CMS.InputType{
+          name: "short text",
+          has_option: false
+        }
+      end
+
       def section_factory do
         %Escala.CMS.Section{
           header: sequence("header"),

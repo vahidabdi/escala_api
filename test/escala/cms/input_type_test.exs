@@ -1,6 +1,5 @@
 defmodule Escala.CMS.InputTypeTest do
   use Escala.DataCase
-  import Escala.Factory
   alias Escala.CMS
 
   describe "create_input_type" do
