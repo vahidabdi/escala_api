@@ -1,7 +1,7 @@
 # Escala API
 
 Escala API is an open source projec, written in [Elixir](https://elixir-lang.org/). It uses [GraphQL](http://graphql.org/) as an endpoint.
-For more info on api documentation, just run the app and open [localhost:4000/graphiql](localhost:4000/graphiql) in your browser.
+For more info on api documentation, just run the app and open [localhost:4000/graphiql](http://localhost:4000/graphiql) in your browser.
 
 
 ## Install
