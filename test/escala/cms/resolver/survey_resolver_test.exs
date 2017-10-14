@@ -95,7 +95,7 @@ defmodule Escala.SurveyResolverTest do
         |> authenticate_user(user)
         |> graphql_query(
           query: @create_survey,
-          variables: %{input: %{survey_input: %{name: "demo"}}}
+          variables: %{input: %{name: "demo"}}
         )
 
       assert response["data"]["createSurvey"]["name"] == "demo"
@@ -106,7 +106,7 @@ defmodule Escala.SurveyResolverTest do
         build_conn()
         |> graphql_query(
           query: @create_survey,
-          variables: %{input: %{survey_input: %{name: "demo"}}}
+          variables: %{input: %{name: "demo"}}
         )
 
       assert response["data"]["createSurvey"] == nil

@@ -15,6 +15,11 @@ defmodule Escala.CMS.OptionChoiceTest do
       assert errors_on(changeset).option_choice_name == ["can't be blank"]
     end
 
+    test "requires option_choice_value" do
+      assert {:error, changeset} = CMS.create_option_choice(%{})
+      assert errors_on(changeset).option_choice_value == ["can't be blank"]
+    end
+
     test "requires option_group_id" do
       assert {:error, changeset} = CMS.create_option_choice(%{})
       assert errors_on(changeset).option_group_id == ["can't be blank"]

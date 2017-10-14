@@ -5,6 +5,7 @@ defmodule Escala.CMS.OptionGroup do
   use Ecto.Schema
   import Ecto.Changeset
   alias Escala.CMS.OptionGroup
+  alias Escala.CMS.OptionChoice
   alias Escala.Accounts.User
 
   @primary_key {:id, Ecto.UUID, read_after_writes: true}
@@ -13,7 +14,9 @@ defmodule Escala.CMS.OptionGroup do
 
   schema "option_groups" do
     field :name, :string
+
     belongs_to :user, User
+    has_many :option_choices, OptionChoice
 
     timestamps()
   end

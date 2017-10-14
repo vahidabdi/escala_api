@@ -17,6 +17,21 @@ defmodule Escala.CMS do
   alias Escala.CMS.QuestionOption
 
   @doc """
+  Returns the list of input types
+  """
+  def list_input_type, do: Repo.all(InputType)
+
+  @doc """
+  get input type
+  """
+  def get_input_type(id) do
+    case UUID.cast(id) do
+      {:ok, _} -> Repo.get(InputType, id)
+      _ -> nil
+    end
+  end
+
+  @doc """
   Returns the list of survey for user
   """
   def list_user_surveys(id) do
@@ -64,6 +79,25 @@ defmodule Escala.CMS do
     end
   end
 
+  @doc """
+  get a section
+  """
+  def get_section(id) do
+    case UUID.cast(id) do
+      {:ok, _} -> Repo.get(Section, id)
+      _ -> nil
+    end
+  end
+
+  @doc """
+  creates a section
+  """
+  def create_section(attrs) do
+    %Section{}
+    |> Section.changeset(attrs)
+    |> Repo.insert()
+  end
+
   # OptionGroup
 
   @doc """
@@ -75,6 +109,16 @@ defmodule Escala.CMS do
     |> Repo.insert()
   end
 
+  @doc """
+  Get a option group
+  """
+  def get_option_group(id) do
+    case UUID.cast id do
+      {:ok, _} -> Repo.get(OptionGroup, id)
+      _ -> nil
+    end
+  end
+
   # OptionChoice
 
   @doc """
@@ -84,6 +128,16 @@ defmodule Escala.CMS do
     %OptionChoice{}
     |> OptionChoice.changeset(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+  Get a option choice
+  """
+  def get_option_choice(id) do
+    case UUID.cast id do
+      {:ok, _} -> Repo.get(OptionChoice, id)
+      _ -> nil
+    end
   end
 
   # InputType
@@ -98,6 +152,16 @@ defmodule Escala.CMS do
   end
 
   # Question
+
+  @doc """
+  get a question
+  """
+  def get_question(id) do
+    case UUID.cast(id) do
+      {:ok, _} -> Repo.get(Question, id)
+      _ -> nil
+    end
+  end
 
   @doc """
   creates question
@@ -117,5 +181,15 @@ defmodule Escala.CMS do
     %QuestionOption{}
     |> QuestionOption.changeset(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+  get question option
+  """
+  def get_question_option(id) do
+    case UUID.cast(id) do
+      {:ok, _} -> Repo.get(QuestionOption, id)
+      _ -> nil
+    end
   end
 end

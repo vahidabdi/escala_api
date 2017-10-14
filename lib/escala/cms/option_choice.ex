@@ -26,7 +26,7 @@ defmodule Escala.CMS.OptionChoice do
   def changeset(%OptionChoice{} = option_choice, attrs) do
     option_choice
     |> cast(attrs, [:option_choice_name, :option_choice_value, :option_group_id])
-    |> validate_required([:option_choice_name, :option_group_id])
+    |> validate_required([:option_choice_name, :option_choice_value, :option_group_id])
     |> foreign_key_constraint(:option_group_id)
   end
 end
