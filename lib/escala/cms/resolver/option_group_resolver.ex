@@ -3,7 +3,6 @@ defmodule Escala.CMS.OptionGroupResolver do
   Option Group Resolver
   """
   alias Escala.CMS
-  alias Escala.Accounts
 
   def find(%{id: id}, %{context: %{current_user: %{id: _id}}}) do
     case CMS.get_option_group(id) do
