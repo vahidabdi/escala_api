@@ -52,4 +52,13 @@ defmodule Escala.CMS.SurveyTest do
       assert errors_on(changeset).user_id == ["is invalid"]
     end
   end
+
+  describe "update_survey" do
+    test "with valid attrs returns updates survey" do
+      survey = insert(:survey)
+
+      assert {:ok, u_survey} = CMS.update_survey(survey, %{name: "Updated survey"})
+      assert u_survey.name == "Updated survey"
+    end
+  end
 end
