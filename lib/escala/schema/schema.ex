@@ -29,6 +29,10 @@ defmodule Escala.Schema do
       resolve &Escala.CMS.QuestionOptionResolver.find/2
     end
 
+    field :input_types, list_of(:input_type) do
+      resolve &Escala.CMS.InputTypeResolver.list/2
+    end
+
     field :input_type, :input_type do
       arg :id, non_null(:id)
 
