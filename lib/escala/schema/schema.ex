@@ -95,5 +95,12 @@ defmodule Escala.Schema do
 
       resolve &Escala.CMS.SurveyResolver.create_survey/2
     end
+
+    field :update_survey, :survey do
+      arg :id, non_null(:id)
+      arg :input, non_null(:survey_input)
+
+      resolve &Escala.CMS.SurveyResolver.update_survey/2
+    end
   end
 end

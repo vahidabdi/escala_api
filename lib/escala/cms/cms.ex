@@ -66,6 +66,15 @@ defmodule Escala.CMS do
     |> Repo.insert()
   end
 
+  @doc """
+  Updates the survey
+  """
+  def update_survey(%Survey{} = survey, attrs) do
+    survey
+    |> Survey.changeset(attrs)
+    |> Repo.update()
+  end
+
   # Section
 
   @doc """
