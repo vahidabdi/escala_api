@@ -37,7 +37,7 @@ defmodule Escala.QuestionResolverTest do
 
   test "returns question" do
     question = insert(:question)
-    user = question.section.survey.user
+    user = question.survey.user
 
     response =
       build_conn()
@@ -53,15 +53,15 @@ defmodule Escala.QuestionResolverTest do
   describe "question mutation" do
     test "creates with valid info" do
       input_type = insert(:input_type)
-      section = insert(:section, survey: build(:survey))
-      user = section.survey.user
+      survey = insert(:survey)
+      user = survey.user
 
       response =
         build_conn()
         |> authenticate_user(user)
         |> graphql_query(
           query: @mutation,
-          variables: %{input: %{input_type_id: input_type.id, question_text: "What's your name?", section_id: section.id}}
+          variables: %{input: %{input_type_id: input_type.id, question_text: "What's your name?", survey_id: survey.id}}
       )
 
 

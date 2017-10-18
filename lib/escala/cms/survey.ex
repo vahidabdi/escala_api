@@ -5,7 +5,7 @@ defmodule Escala.CMS.Survey do
   use Ecto.Schema
   import Ecto.Changeset
   alias Escala.CMS.Survey
-  alias Escala.CMS.Section
+  alias Escala.CMS.Question
   alias Escala.Accounts.User
 
   @primary_key {:id, Ecto.UUID, read_after_writes: true}
@@ -18,7 +18,7 @@ defmodule Escala.CMS.Survey do
     field :title, :string
     field :description, :string
     belongs_to :user, User
-    has_many :sections, Section
+    has_many :questions, Question
 
     timestamps()
   end

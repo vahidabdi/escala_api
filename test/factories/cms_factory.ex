@@ -41,7 +41,7 @@ defmodule Escala.CMSFactory do
         %Escala.CMS.Question{
           question_text: "what's your name",
           input_type: build(:input_type),
-          section: build(:section, survey: build(:survey))
+          survey: build(:survey)
         }
       end
 

@@ -188,6 +188,7 @@ defmodule Escala.Schema.Type do
     field :survey_id, non_null(:id)
     field :header, non_null(:string)
     field :sub_header, :string
+    field :questions_input, list_of(:question_input)
   end
 
   @desc "question input"
@@ -197,7 +198,7 @@ defmodule Escala.Schema.Type do
     field :allow_multiple_option, :boolean
     field :answer_required, :boolean
     field :input_type_id, non_null(:id)
-    field :section_id, non_null(:id)
+    field :survey_id, non_null(:id)
   end
 
   @desc "survey input"
