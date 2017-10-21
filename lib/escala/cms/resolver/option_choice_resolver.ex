@@ -7,6 +7,7 @@ defmodule Escala.CMS.OptionChoiceResolver do
       o -> {:ok, o}
     end
   end
+
   def find(_, _) do
     {:error, "مجوز ندارید"}
   end

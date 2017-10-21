@@ -11,14 +11,14 @@ defmodule Escala.Accounts.User do
   @timestamps_opts [type: :utc_datetime, usec: false]
 
   schema "account_users" do
-    field :email, :string
-    field :username, :string
-    field :first_name, :string
-    field :last_name, :string
-    field :picture, :string
-    field :providers, {:array, :string}
+    field(:email, :string)
+    field(:username, :string)
+    field(:first_name, :string)
+    field(:last_name, :string)
+    field(:picture, :string)
+    field(:providers, {:array, :string})
 
-    has_many :option_groups, OptionGroup
+    has_many(:option_groups, OptionGroup)
 
     timestamps()
   end

@@ -3,7 +3,6 @@ defmodule Escala.CMS.OptionGroupTest do
   import Escala.Factory
   alias Escala.CMS
 
-
   describe "create option group" do
     test "with valid attributes returns new survey" do
       user = insert(:account_user)

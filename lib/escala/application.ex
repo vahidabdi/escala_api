@@ -14,7 +14,7 @@ defmodule Escala.Application do
       # Start the Ecto repository
       supervisor(Escala.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(EscalaWeb.Endpoint, []),
+      supervisor(EscalaWeb.Endpoint, [])
       # Start your own worker by calling: Escala.Worker.start_link(arg1, arg2, arg3)
       # worker(Escala.Worker, [arg1, arg2, arg3]),
     ]

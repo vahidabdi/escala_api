@@ -7,6 +7,7 @@ defmodule Escala.CMS.QuestionOptionResolver do
       q -> {:ok, q}
     end
   end
+
   def find(_, _) do
     {:error, "مجوز ندارید"}
   end

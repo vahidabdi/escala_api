@@ -1,44 +1,52 @@
 defmodule EscalaWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :escala
 
-  socket "/socket", EscalaWeb.UserSocket
+  socket("/socket", EscalaWeb.UserSocket)
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
-  plug Plug.Static,
-    at: "/", from: :escala, gzip: false,
+  plug(
+    Plug.Static,
+    at: "/",
+    from: :escala,
+    gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
+  )
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
-    plug Phoenix.CodeReloader
+    plug(Phoenix.CodeReloader)
   end
 
-  plug Plug.RequestId
-  plug Plug.Logger
+  plug(Plug.RequestId)
+  plug(Plug.Logger)
 
-  plug Plug.Parsers,
+  plug(
+    Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
     json_decoder: Poison
+  )
 
-  plug Plug.MethodOverride
-  plug Plug.Head
+  plug(Plug.MethodOverride)
+  plug(Plug.Head)
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
+  plug(
+    Plug.Session,
     store: :cookie,
     key: "_escala_key",
     signing_salt: "If2XmF6J"
+  )
 
-  plug CORSPlug
+  plug(CORSPlug)
 
-  plug EscalaWeb.Router
+  plug(EscalaWeb.Router)
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

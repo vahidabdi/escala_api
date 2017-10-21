@@ -25,13 +25,13 @@ defmodule EscalaWeb.ChannelCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Escala.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Escala.Repo, {:shared, self()})
     end
+
     :ok
   end
-
 end

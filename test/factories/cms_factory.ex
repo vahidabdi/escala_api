@@ -12,7 +12,7 @@ defmodule Escala.CMSFactory do
 
       def option_group_factory do
         %Escala.CMS.OptionGroup{
-          name: "Rate 1-5",
+          name: "Rate 1-5"
         }
       end
 
@@ -26,14 +26,14 @@ defmodule Escala.CMSFactory do
 
       def section_factory do
         %Escala.CMS.Section{
-          header: sequence("header"),
+          header: sequence("header")
         }
       end
 
       def survey_factory do
         %Escala.CMS.Survey{
           name: "sample survey",
-          user: build(:account_user),
+          user: build(:account_user)
         }
       end
 

@@ -20,7 +20,7 @@ defmodule Escala.Accounts do
   Get a user
   """
   def get_user(id) do
-    case UUID.cast id do
+    case UUID.cast(id) do
       {:ok, _} -> Repo.get(User, id)
       _ -> nil
     end
@@ -52,6 +52,7 @@ defmodule Escala.Accounts do
       %User{}
       |> User.changeset(attrs)
       |> Repo.insert(on_conflict: :nothing)
+
     cond do
       user.id == nil -> {:ok, Repo.get_by(User, email: attrs.email)}
       true -> {:ok, user}

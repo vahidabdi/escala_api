@@ -7,6 +7,7 @@ defmodule Escala.CMS.SectionResolver do
       s -> {:ok, s}
     end
   end
+
   def find(_, _) do
     {:error, "مجوز ندارید"}
   end
@@ -17,6 +18,7 @@ defmodule Escala.CMS.SectionResolver do
       {:error, _} -> {:error, "خطا در ایجاد"}
     end
   end
+
   def create(_, _) do
     {:error, "مجوز ندارید"}
   end

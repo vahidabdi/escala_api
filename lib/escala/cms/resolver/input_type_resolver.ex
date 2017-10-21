@@ -2,7 +2,7 @@ defmodule Escala.CMS.InputTypeResolver do
   alias Escala.CMS
 
   def list(_, _) do
-    {:ok, CMS.list_input_type}
+    {:ok, CMS.list_input_type()}
   end
 
   def find(%{id: id}, %{context: %{current_user: %{id: _id}}}) do
@@ -11,6 +11,7 @@ defmodule Escala.CMS.InputTypeResolver do
       i -> {:ok, i}
     end
   end
+
   def find(_, _) do
     {:error, "مجوز ندارید"}
   end

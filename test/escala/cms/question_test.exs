@@ -17,6 +17,7 @@ defmodule Escala.CMS.QuestionTest do
           survey_id: survey.id,
           input_type_id: input_type.id
         }
+
       assert {:ok, _question} = CMS.create_question(attrs)
     end
 
@@ -26,6 +27,7 @@ defmodule Escala.CMS.QuestionTest do
           survey_id: survey.id,
           input_type_id: input_type.id
         }
+
       assert {:error, changeset} = CMS.create_question(attrs)
       assert errors_on(changeset).question_text == ["can't be blank"]
     end
@@ -36,6 +38,7 @@ defmodule Escala.CMS.QuestionTest do
           question_text: "what's your name?",
           survey_id: survey.id
         }
+
       assert {:error, changeset} = CMS.create_question(attrs)
       assert errors_on(changeset).input_type_id == ["can't be blank"]
     end
@@ -47,6 +50,7 @@ defmodule Escala.CMS.QuestionTest do
           survey_id: survey.id,
           input_type_id: 1
         }
+
       assert {:error, changeset} = CMS.create_question(attrs)
       assert errors_on(changeset).input_type_id == ["is invalid"]
     end
@@ -57,6 +61,7 @@ defmodule Escala.CMS.QuestionTest do
           question_text: "what's your name?",
           input_type_id: input_type.id
         }
+
       assert {:error, changeset} = CMS.create_question(attrs)
       assert errors_on(changeset).survey_id == ["can't be blank"]
     end
@@ -68,6 +73,7 @@ defmodule Escala.CMS.QuestionTest do
           survey_id: 1,
           input_type_id: input_type.id
         }
+
       assert {:error, changeset} = CMS.create_question(attrs)
       assert errors_on(changeset).survey_id == ["is invalid"]
     end

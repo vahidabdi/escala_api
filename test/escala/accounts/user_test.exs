@@ -6,7 +6,7 @@ defmodule Escala.Accounts.UserTest do
 
   @valid_user %{
     email: "user@example.com",
-    username: "username",
+    username: "username"
   }
 
   def user_fixture(attrs \\ %{}) do
@@ -23,7 +23,7 @@ defmodule Escala.Accounts.UserTest do
     test "returns all users" do
       [user1, user2] = insert_pair(:account_user)
 
-      assert Accounts.list_users == [user1, user2]
+      assert Accounts.list_users() == [user1, user2]
     end
   end
 
@@ -77,11 +77,13 @@ defmodule Escala.Accounts.UserTest do
           first_name: "vahid",
           last_name: "abdi"
         }
+
       {:ok, updated_user} = Accounts.update_user(user, params)
       assert updated_user.username == "new_user"
       assert updated_user.first_name == "vahid"
       assert updated_user.last_name == "abdi"
-      assert updated_user.email == "email@example.com" # Doesn't change email
+      # Doesn't change email
+      assert updated_user.email == "email@example.com"
     end
   end
 

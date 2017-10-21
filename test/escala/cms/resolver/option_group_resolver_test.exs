@@ -33,9 +33,9 @@ defmodule Escala.OptionGroupResolverTest do
       response =
         build_conn()
         |> graphql_query(
-          query: @query,
-          variables: %{id: option_group.id}
-        )
+             query: @query,
+             variables: %{id: option_group.id}
+           )
 
       assert response["data"]["optionGroup"] == nil
     end
@@ -48,12 +48,12 @@ defmodule Escala.OptionGroupResolverTest do
         build_conn()
         |> authenticate_user(user)
         |> graphql_query(
-          query: @query,
-          variables: %{id: option_group.id}
-        )
+             query: @query,
+             variables: %{id: option_group.id}
+           )
 
-        assert response["data"]["optionGroup"]["id"] == option_group.id
-        assert response["data"]["optionGroup"]["user"]["id"] == user.id
+      assert response["data"]["optionGroup"]["id"] == option_group.id
+      assert response["data"]["optionGroup"]["user"]["id"] == user.id
     end
   end
 
@@ -65,14 +65,12 @@ defmodule Escala.OptionGroupResolverTest do
         build_conn()
         |> authenticate_user(user)
         |> graphql_query(
-        query: @mutation,
-        variables: %{input: %{name: "option group1"}}
-      )
+             query: @mutation,
+             variables: %{input: %{name: "option group1"}}
+           )
 
       assert response["data"]["createOptionGroup"]["name"] == "option group1"
       assert response["data"]["createOptionGroup"]["user"]["id"] == user.id
-
     end
   end
-
 end

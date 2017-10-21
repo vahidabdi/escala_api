@@ -13,8 +13,8 @@ defmodule Escala.CMS.QuestionOption do
   @foreign_key_type Ecto.UUID
 
   schema "question_options" do
-    belongs_to :question, Question
-    belongs_to :option_choice, OptionChoice
+    belongs_to(:question, Question)
+    belongs_to(:option_choice, OptionChoice)
   end
 
   @doc false
@@ -29,9 +29,11 @@ defmodule Escala.CMS.QuestionOption do
 
   defp validate_accept_option(changeset, field) do
     import Ecto.Query
+
     validate_change(changeset, field, fn :question_id, question_id ->
-      query = from q in Question, where: q.id == ^question_id, preload: [:input_type]
+      query = from(q in Question, where: q.id == ^question_id, preload: [:input_type])
       question = Escala.Repo.one(query)
+
       case question.input_type.has_option do
         true -> []
         false -> [question_id: "can't have option"]

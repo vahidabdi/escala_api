@@ -7,6 +7,7 @@ defmodule Escala.CMS.QuestionResolver do
       q -> {:ok, q}
     end
   end
+
   def find(_, _) do
     {:error, "مجوز ندارید"}
   end
@@ -17,6 +18,7 @@ defmodule Escala.CMS.QuestionResolver do
       {:error, _} -> {:error, "خطا در ایجاد پرسش"}
     end
   end
+
   def create(_, _) do
     {:error, "مجوز ندارید"}
   end

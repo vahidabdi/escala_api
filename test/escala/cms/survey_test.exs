@@ -11,7 +11,7 @@ defmodule Escala.CMS.SurveyTest do
     test "returns all surveys" do
       [_survey1, _survey2] = insert_pair(:survey)
 
-      assert CMS.list_surveys |> length == 2
+      assert CMS.list_surveys() |> length == 2
     end
   end
 

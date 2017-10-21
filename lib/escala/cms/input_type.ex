@@ -11,10 +11,10 @@ defmodule Escala.CMS.InputType do
   @primary_key {:id, Ecto.UUID, read_after_writes: true}
 
   schema "input_types" do
-    field :name, :string
-    field :has_option, :boolean
+    field(:name, :string)
+    field(:has_option, :boolean)
 
-    has_many :questions, Question
+    has_many(:questions, Question)
   end
 
   @doc false

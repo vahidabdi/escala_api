@@ -12,7 +12,6 @@ defmodule Escala.CMS.InputTypeTest do
       assert {:error, changeset} = CMS.create_input_type(%{})
       assert errors_on(changeset).name == ["can't be blank"]
     end
-
   end
 
   test "with duplicate name returns error" do
@@ -26,5 +25,4 @@ defmodule Escala.CMS.InputTypeTest do
     assert {:error, changeset} = CMS.create_input_type(%{})
     assert errors_on(changeset).has_option == ["can't be blank"]
   end
-
 end

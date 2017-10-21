@@ -12,14 +12,14 @@ defmodule Escala.Accounts.Authentication do
          {:ok, %OAuth2.Response{body: user}} <- get_user!(provider, client),
          user = construct_user(provider, user),
          {:ok, user} = Accounts.find_or_create_user(user) do
-           {:ok, user}
+      {:ok, user}
     else
       _ ->
         {:error, %{message: "خطا در ورود به سیستم"}}
     end
   end
 
-  defp get_token("google", code),   do: Google.get_token(code: code)
+  defp get_token("google", code), do: Google.get_token(code: code)
 
   defp get_user!("google", client) do
     Client.get(client, @uri)
@@ -31,6 +31,7 @@ defmodule Escala.Accounts.Authentication do
     last_name = user["family_name"]
     picture = user["picture"]
     providers = ["google"]
+
     %{
       email: email,
       first_name: first_name,

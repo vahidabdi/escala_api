@@ -27,9 +27,9 @@ defmodule Escala.QuestionResolverTest do
       response =
         build_conn()
         |> graphql_query(
-          query: @query,
-          variables: %{id: question.id}
-        )
+             query: @query,
+             variables: %{id: question.id}
+           )
 
       assert response["data"]["question"] == nil
     end
@@ -43,9 +43,9 @@ defmodule Escala.QuestionResolverTest do
       build_conn()
       |> authenticate_user(user)
       |> graphql_query(
-        query: @query,
-        variables: %{id: question.id}
-      )
+           query: @query,
+           variables: %{id: question.id}
+         )
 
     assert response["data"]["question"]["id"] == question.id
   end
@@ -60,10 +60,15 @@ defmodule Escala.QuestionResolverTest do
         build_conn()
         |> authenticate_user(user)
         |> graphql_query(
-          query: @mutation,
-          variables: %{input: %{input_type_id: input_type.id, question_text: "What's your name?", survey_id: survey.id}}
-      )
-
+             query: @mutation,
+             variables: %{
+               input: %{
+                 input_type_id: input_type.id,
+                 question_text: "What's your name?",
+                 survey_id: survey.id
+               }
+             }
+           )
 
       assert response["data"]["createQuestion"]["question_text"] == "What's your name?"
     end

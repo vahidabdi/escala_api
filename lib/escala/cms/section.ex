@@ -6,18 +6,16 @@ defmodule Escala.CMS.Section do
   import Ecto.Changeset
   alias Escala.CMS.Section
   alias Escala.CMS.Survey
-  alias Escala.CMS.Question
 
   @primary_key {:id, Ecto.UUID, read_after_writes: true}
   @foreign_key_type Ecto.UUID
   @timestamps_opts [type: :utc_datetime, usec: false]
 
   schema "sections" do
-    field :header, :string
-    field :sub_header, :string
+    field(:header, :string)
+    field(:sub_header, :string)
 
-    belongs_to :survey, Survey
-    has_many :questions, Question
+    belongs_to(:survey, Survey)
 
     timestamps()
   end

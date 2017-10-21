@@ -13,12 +13,12 @@ defmodule Escala.CMS.Survey do
   @timestamps_opts [type: :utc_datetime, usec: false]
 
   schema "surveys" do
-    field :name, :string
-    field :welcome, :string
-    field :title, :string
-    field :description, :string
-    belongs_to :user, User
-    has_many :questions, Question
+    field(:name, :string)
+    field(:welcome, :string)
+    field(:title, :string)
+    field(:description, :string)
+    belongs_to(:user, User)
+    has_many(:questions, Question)
 
     timestamps()
   end

@@ -8,6 +8,7 @@ defmodule Escala.Accounts.UserResolver do
     user = Accounts.get_user(id)
     {:ok, user}
   end
+
   def current_user(_, _) do
     {:error, "invalid token"}
   end
@@ -17,10 +18,12 @@ defmodule Escala.Accounts.UserResolver do
       {:ok, user} ->
         {:ok, jwt, _claims} = Guardian.encode_and_sign(user)
         {:ok, %{user: user, jwt: jwt}}
+
       {:error, msg} ->
         {:error, msg}
     end
   end
+
   def login(_, _) do
     {:error, "problem with login"}
   end

@@ -31,9 +31,9 @@ defmodule Escala.OptionChoice do
       response =
         build_conn()
         |> graphql_query(
-        query: @query,
-        variables: %{id: option_choice.id}
-      )
+             query: @query,
+             variables: %{id: option_choice.id}
+           )
 
       assert response["data"]["optionChoice"] == nil
     end
@@ -47,9 +47,9 @@ defmodule Escala.OptionChoice do
         build_conn()
         |> authenticate_user(user)
         |> graphql_query(
-        query: @query,
-        variables: %{id: option_choice.id}
-      )
+             query: @query,
+             variables: %{id: option_choice.id}
+           )
 
       assert response["data"]["optionChoice"]["id"] == option_choice.id
     end
@@ -64,9 +64,15 @@ defmodule Escala.OptionChoice do
         build_conn()
         |> authenticate_user(user)
         |> graphql_query(
-        query: @mutation,
-        variables: %{input: %{option_choice_name: "good", option_choice_value: "5", option_group_id: option_group.id}}
-      )
+             query: @mutation,
+             variables: %{
+               input: %{
+                 option_choice_name: "good",
+                 option_choice_value: "5",
+                 option_group_id: option_group.id
+               }
+             }
+           )
 
       assert response["data"]["createOptionChoice"]["option_choice_name"] == "good"
     end

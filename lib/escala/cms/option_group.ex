@@ -13,10 +13,10 @@ defmodule Escala.CMS.OptionGroup do
   @timestamps_opts [type: :utc_datetime, usec: false]
 
   schema "option_groups" do
-    field :name, :string
+    field(:name, :string)
 
-    belongs_to :user, User
-    has_many :option_choices, OptionChoice
+    belongs_to(:user, User)
+    has_many(:option_choices, OptionChoice)
 
     timestamps()
   end

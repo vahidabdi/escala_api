@@ -13,7 +13,7 @@ defmodule Google do
       site: "https://accounts.google.com",
       authorize_url: "/o/oauth2/auth",
       params: %{scope: "https://www.googleapis.com/auth/userinfo.email"},
-      token_url: "/o/oauth2/token",
+      token_url: "/o/oauth2/token"
     ]
   end
 
@@ -21,6 +21,7 @@ defmodule Google do
 
   def client do
     conf = Application.get_env(:escala, __MODULE__)
+
     conf
     |> Keyword.merge(config())
     |> Client.new()
@@ -30,7 +31,7 @@ defmodule Google do
     Client.authorize_url!(client())
   end
 
-  def get_token([code: code]) do
+  def get_token(code: code) do
     Client.get_token(
       client(),
       code: code,

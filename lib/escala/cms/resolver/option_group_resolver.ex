@@ -10,17 +10,20 @@ defmodule Escala.CMS.OptionGroupResolver do
       o -> {:ok, o}
     end
   end
+
   def find(_, _) do
     {:error, "مجوز ندارید"}
   end
 
   def create(%{input: args}, %{context: %{current_user: %{id: user_id}}}) do
     args = args |> Map.merge(%{user_id: user_id})
+
     case CMS.create_option_group(args) do
       {:ok, op} -> {:ok, op}
       {:error, _} -> {:error, "مشکل در ایجاد"}
     end
   end
+
   def create(_, _) do
     {:error, "مجوز ندارید"}
   end

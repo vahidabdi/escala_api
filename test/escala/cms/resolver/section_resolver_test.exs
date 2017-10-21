@@ -34,9 +34,9 @@ defmodule Escala.SectionResolverTest do
       response =
         build_conn()
         |> graphql_query(
-          query: @query,
-          variables: %{id: section.id}
-        )
+             query: @query,
+             variables: %{id: section.id}
+           )
 
       assert response["data"]["section"] == nil
     end
@@ -50,9 +50,9 @@ defmodule Escala.SectionResolverTest do
         build_conn()
         |> authenticate_user(user)
         |> graphql_query(
-          query: @query,
-          variables: %{id: section.id}
-        )
+             query: @query,
+             variables: %{id: section.id}
+           )
 
       assert response["data"]["section"]["id"] == section.id
     end
@@ -67,9 +67,9 @@ defmodule Escala.SectionResolverTest do
         build_conn()
         |> authenticate_user(user)
         |> graphql_query(
-          query: @mutation,
-          variables: %{input: %{survey_id: survey.id, header: "header"}}
-        )
+             query: @mutation,
+             variables: %{input: %{survey_id: survey.id, header: "header"}}
+           )
 
       assert response["data"]["createSection"]["header"] == "header"
       assert response["data"]["createSection"]["survey"]["id"] == survey.id

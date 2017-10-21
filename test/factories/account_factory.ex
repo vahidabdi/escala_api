@@ -12,7 +12,7 @@ defmodule Escala.AccountFactory do
       def account_user_factory do
         %Escala.Accounts.User{
           email: sequence(:email, &"email#{&1}@example.com"),
-          username: sequence(:username, &"name#{&1}"),
+          username: sequence(:username, &"name#{&1}")
         }
       end
 

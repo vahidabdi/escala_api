@@ -51,7 +51,7 @@ defmodule Escala.CMS do
   Get a survey
   """
   def get_survey(id) do
-    case UUID.cast id do
+    case UUID.cast(id) do
       {:ok, _} -> Repo.get(Survey, id)
       _ -> nil
     end
@@ -81,10 +81,12 @@ defmodule Escala.CMS do
   Returns list of survey sections
   """
   def list_sections(survey_id) do
-    case UUID.cast survey_id do
+    case UUID.cast(survey_id) do
       {:ok, _} ->
-        Repo.all from s in Section, where: s.survey_id == ^survey_id
-      _ -> nil
+        Repo.all(from(s in Section, where: s.survey_id == ^survey_id))
+
+      _ ->
+        nil
     end
   end
 
@@ -122,7 +124,7 @@ defmodule Escala.CMS do
   Get a option group
   """
   def get_option_group(id) do
-    case UUID.cast id do
+    case UUID.cast(id) do
       {:ok, _} -> Repo.get(OptionGroup, id)
       _ -> nil
     end
@@ -143,7 +145,7 @@ defmodule Escala.CMS do
   Get a option choice
   """
   def get_option_choice(id) do
-    case UUID.cast id do
+    case UUID.cast(id) do
       {:ok, _} -> Repo.get(OptionChoice, id)
       _ -> nil
     end
