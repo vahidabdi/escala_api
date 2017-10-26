@@ -138,11 +138,14 @@ defmodule Escala.Schema.Type do
     @desc "input type"
     field(:input_type, :input_type, resolve: assoc(:input_type))
 
-    @desc "section"
-    field(:section, :section, resolve: assoc(:section))
+    @desc "survey"
+    field(:survey, :survey, resolve: assoc(:survey))
 
     @desc "question options"
     field(:question_options, list_of(:question_option), resolve: assoc(:question_options))
+
+    @desc "question position"
+    field(:position, :integer)
   end
 
   @desc "survey"
@@ -199,6 +202,7 @@ defmodule Escala.Schema.Type do
     field(:answer_required, :boolean)
     field(:input_type_id, non_null(:id))
     field(:survey_id, non_null(:id))
+    field(:position, non_null(:integer))
   end
 
   @desc "survey input"

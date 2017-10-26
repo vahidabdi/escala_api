@@ -18,6 +18,7 @@ defmodule Escala.CMS.Question do
     field(:question_subtext, :string)
     field(:allow_multiple_option, :boolean, default: false)
     field(:answer_required, :boolean, default: false)
+    field(:position, :integer)
 
     belongs_to(:input_type, InputType)
     belongs_to(:survey, Survey)
@@ -35,10 +36,12 @@ defmodule Escala.CMS.Question do
          :answer_required,
          :allow_multiple_option,
          :input_type_id,
-         :survey_id
+         :survey_id,
+         :position
        ])
-    |> validate_required([:question_text, :survey_id, :input_type_id])
+    |> validate_required([:question_text, :survey_id, :input_type_id, :position])
     |> foreign_key_constraint(:survey_id)
     |> foreign_key_constraint(:input_type_id)
+    |> unique_constraint(:position, name: :unique_position)
   end
 end

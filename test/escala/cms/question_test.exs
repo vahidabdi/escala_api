@@ -15,7 +15,8 @@ defmodule Escala.CMS.QuestionTest do
         %{
           question_text: "what's your name?",
           survey_id: survey.id,
-          input_type_id: input_type.id
+          input_type_id: input_type.id,
+          position: 1,
         }
 
       assert {:ok, _question} = CMS.create_question(attrs)
@@ -76,6 +77,32 @@ defmodule Escala.CMS.QuestionTest do
 
       assert {:error, changeset} = CMS.create_question(attrs)
       assert errors_on(changeset).survey_id == ["is invalid"]
+    end
+
+    test "requires position", %{input_type: input_type, survey: survey} do
+      attrs =
+        %{
+          question_text: "What's your name?",
+          survey_id: survey.id,
+          input_type_id: input_type.id,
+        }
+
+      assert {:error, changeset} = CMS.create_question(attrs)
+      assert errors_on(changeset).position == ["can't be blank"]
+    end
+
+    test "requires unique position in survey", %{input_type: input_type, survey: survey} do
+      attrs =
+        %{
+          question_text: "What's your name?",
+          survey_id: survey.id,
+          input_type_id: input_type.id,
+          position: 1
+        }
+
+      assert {:ok, _q} = CMS.create_question(attrs)
+      assert {:error, changeset} = CMS.create_question(attrs)
+      assert errors_on(changeset).position == ["has already been taken"]
     end
   end
 end
