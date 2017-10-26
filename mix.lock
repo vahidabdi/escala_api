@@ -1,4 +1,5 @@
-%{"absinthe": {:hex, :absinthe, "1.3.2", "1d16ee5ceeb8b90e37f936b924caacc099b9da667e9c7e6a4d729f41197123d4", [], [], "hexpm"},
+%{
+  "absinthe": {:hex, :absinthe, "1.3.2", "1d16ee5ceeb8b90e37f936b924caacc099b9da667e9c7e6a4d729f41197123d4", [], [], "hexpm"},
   "absinthe_ecto": {:hex, :absinthe_ecto, "0.1.2", "bdee4bef46fa2f8ab931a711dc208c817e86d729a145085845de9a6d03c45135", [], [{:absinthe, "~> 1.3.0", [hex: :absinthe, repo: "hexpm", optional: false]}, {:ecto, ">= 0.0.0", [hex: :ecto, repo: "hexpm", optional: false]}], "hexpm"},
   "absinthe_plug": {:hex, :absinthe_plug, "1.3.1", "e97c9faa6a2e29be181205d994c3ca2e2c5c5dec38aea69fcd324407f6c163c6", [], [{:absinthe, "~> 1.3.0", [hex: :absinthe, repo: "hexpm", optional: false]}, {:plug, "~> 1.3.2 or ~> 1.4", [hex: :plug, repo: "hexpm", optional: false]}], "hexpm"},
   "base64url": {:hex, :base64url, "0.0.1", "36a90125f5948e3afd7be97662a1504b934dd5dac78451ca6e9abf85a10286be", [], [], "hexpm"},
@@ -8,7 +9,7 @@
   "cors_plug": {:hex, :cors_plug, "1.4.0", "c1c4fb68adf2fd1b4caccee978663edd58f62881627ab65b52ff56146945687f", [], [{:plug, "> 0.14.0", [hex: :plug, repo: "hexpm", optional: false]}], "hexpm"},
   "cowboy": {:hex, :cowboy, "1.1.2", "61ac29ea970389a88eca5a65601460162d370a70018afe6f949a29dca91f3bb0", [], [{:cowlib, "~> 1.0.2", [hex: :cowlib, repo: "hexpm", optional: false]}, {:ranch, "~> 1.3.2", [hex: :ranch, repo: "hexpm", optional: false]}], "hexpm"},
   "cowlib": {:hex, :cowlib, "1.0.2", "9d769a1d062c9c3ac753096f868ca121e2730b9a377de23dec0f7e08b1df84ee", [], [], "hexpm"},
-  "credo": {:hex, :credo, "0.8.6", "335f723772d35da499b5ebfdaf6b426bfb73590b6fcbc8908d476b75f8cbca3f", [], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}], "hexpm"},
+  "credo": {:hex, :credo, "0.8.8", "990e7844a8d06ebacd88744a55853a83b74270b8a8461c55a4d0334b8e1736c9", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}], "hexpm"},
   "db_connection": {:hex, :db_connection, "1.1.2", "2865c2a4bae0714e2213a0ce60a1b12d76a6efba0c51fbda59c9ab8d1accc7a8", [], [{:connection, "~> 1.0.2", [hex: :connection, repo: "hexpm", optional: false]}, {:poolboy, "~> 1.5", [hex: :poolboy, repo: "hexpm", optional: true]}, {:sbroker, "~> 1.0", [hex: :sbroker, repo: "hexpm", optional: true]}], "hexpm"},
   "decimal": {:hex, :decimal, "1.4.0", "fac965ce71a46aab53d3a6ce45662806bdd708a4a95a65cde8a12eb0124a1333", [], [], "hexpm"},
   "ecto": {:hex, :ecto, "2.2.1", "ccc6fd304f9bb785f2c3cfd0ee8da6bad6544ab12ca5f7162b20a743d938417c", [], [{:db_connection, "~> 1.1", [hex: :db_connection, repo: "hexpm", optional: true]}, {:decimal, "~> 1.2", [hex: :decimal, repo: "hexpm", optional: false]}, {:mariaex, "~> 0.8.0", [hex: :mariaex, repo: "hexpm", optional: true]}, {:poison, "~> 2.2 or ~> 3.0", [hex: :poison, repo: "hexpm", optional: true]}, {:poolboy, "~> 1.5", [hex: :poolboy, repo: "hexpm", optional: false]}, {:postgrex, "~> 0.13.0", [hex: :postgrex, repo: "hexpm", optional: true]}, {:sbroker, "~> 1.0", [hex: :sbroker, repo: "hexpm", optional: true]}], "hexpm"},
@@ -32,4 +33,5 @@
   "ranch": {:hex, :ranch, "1.3.2", "e4965a144dc9fbe70e5c077c65e73c57165416a901bd02ea899cfd95aa890986", [], [], "hexpm"},
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.1", "28a4d65b7f59893bc2c7de786dec1e1555bd742d336043fe644ae956c3497fbe", [], [], "hexpm"},
   "unicode_util_compat": {:hex, :unicode_util_compat, "0.3.1", "a1f612a7b512638634a603c8f401892afbf99b8ce93a45041f8aaca99cadb85e", [], [], "hexpm"},
-  "uuid": {:hex, :uuid, "1.1.7", "007afd58273bc0bc7f849c3bdc763e2f8124e83b957e515368c498b641f7ab69", [], [], "hexpm"}}
+  "uuid": {:hex, :uuid, "1.1.7", "007afd58273bc0bc7f849c3bdc763e2f8124e83b957e515368c498b641f7ab69", [], [], "hexpm"},
+}

@@ -52,7 +52,7 @@ defmodule Escala.Mixfile do
       {:ex_machina, "~> 2.1", only: :test},
 
       # dev
-      {:credo, "~> 0.8.6", only: :dev}
+      {:credo, "~> 0.8.8", only: :dev}
     ]
   end
 
