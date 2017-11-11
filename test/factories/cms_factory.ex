@@ -24,12 +24,6 @@ defmodule Escala.CMSFactory do
         }
       end
 
-      def section_factory do
-        %Escala.CMS.Section{
-          header: sequence("header")
-        }
-      end
-
       def survey_factory do
         %Escala.CMS.Survey{
           name: "sample survey",
@@ -44,11 +38,6 @@ defmodule Escala.CMSFactory do
           survey: build(:survey),
           position: sequence(:position, &(&1))
         }
-      end
-
-      def with_sections(%Escala.CMS.Survey{} = survey) do
-        insert_pair(:section, survey: survey)
-        survey
       end
     end
   end

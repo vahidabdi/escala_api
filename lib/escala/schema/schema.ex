@@ -39,12 +39,6 @@ defmodule Escala.Schema do
       resolve(&Escala.CMS.InputTypeResolver.find/2)
     end
 
-    field :section, :section do
-      arg(:id, non_null(:id))
-
-      resolve(&Escala.CMS.SectionResolver.find/2)
-    end
-
     field :question, :question do
       arg(:id, non_null(:id))
 
@@ -86,12 +80,6 @@ defmodule Escala.Schema do
       arg(:input, non_null(:question_input))
 
       resolve(&Escala.CMS.QuestionResolver.create/2)
-    end
-
-    field :create_section, :section do
-      arg(:input, non_null(:section_input))
-
-      resolve(&Escala.CMS.SectionResolver.create/2)
     end
 
     field :create_survey, :survey do

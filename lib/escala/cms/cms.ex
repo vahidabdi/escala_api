@@ -9,7 +9,6 @@ defmodule Escala.CMS do
   alias Ecto.UUID
   alias Escala.Repo
   alias Escala.CMS.Survey
-  alias Escala.CMS.Section
   alias Escala.CMS.OptionGroup
   alias Escala.CMS.OptionChoice
   alias Escala.CMS.InputType
@@ -73,40 +72,6 @@ defmodule Escala.CMS do
     survey
     |> Survey.changeset(attrs)
     |> Repo.update()
-  end
-
-  # Section
-
-  @doc """
-  Returns list of survey sections
-  """
-  def list_sections(survey_id) do
-    case UUID.cast(survey_id) do
-      {:ok, _} ->
-        Repo.all(from(s in Section, where: s.survey_id == ^survey_id))
-
-      _ ->
-        nil
-    end
-  end
-
-  @doc """
-  get a section
-  """
-  def get_section(id) do
-    case UUID.cast(id) do
-      {:ok, _} -> Repo.get(Section, id)
-      _ -> nil
-    end
-  end
-
-  @doc """
-  creates a section
-  """
-  def create_section(attrs) do
-    %Section{}
-    |> Section.changeset(attrs)
-    |> Repo.insert()
   end
 
   # OptionGroup
