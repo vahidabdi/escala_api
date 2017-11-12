@@ -43,21 +43,6 @@ defmodule Escala.Schema.Type do
     field(:jwt, :string)
   end
 
-  @desc "option group"
-  object :option_group do
-    @desc "option group id"
-    field(:id, :id)
-
-    @desc "name"
-    field(:name, :string)
-
-    @desc "user"
-    field(:user, :user, resolve: assoc(:user))
-
-    @desc "option choices"
-    field(:option_choices, list_of(:option_choice), resolve: assoc(:option_choices))
-  end
-
   @desc "option choice"
   object :option_choice do
     @desc "option choice id"
@@ -68,9 +53,6 @@ defmodule Escala.Schema.Type do
 
     @desc "option choice value"
     field(:option_choice_value, :string)
-
-    @desc "option group"
-    field(:option_group, :option_group, resolve: assoc(:option_group))
 
     @desc "question options"
     field(:question_options, list_of(:question_option), resolve: assoc(:question_options))
@@ -174,16 +156,11 @@ defmodule Escala.Schema.Type do
 
   # input objects
 
-  @desc "option group input"
-  input_object :option_group_input do
-    field(:name, non_null(:string))
-  end
-
   @desc "option choice input"
   input_object :option_choice_input do
     field(:option_choice_name, non_null(:string))
     field(:option_choice_value, non_null(:string))
-    field(:option_group_id, non_null(:id))
+    field(:question_id, non_null(:id))
   end
 
   @desc "section input"

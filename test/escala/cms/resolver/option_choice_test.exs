@@ -24,9 +24,7 @@ defmodule Escala.OptionChoice do
 
   describe "query option choice" do
     test "returns nil without auth header" do
-      user = insert(:account_user)
-      option_group = insert(:option_group, user: user)
-      option_choice = insert(:option_choice, option_group: option_group)
+      option_choice = insert(:option_choice)
 
       response =
         build_conn()
@@ -40,8 +38,7 @@ defmodule Escala.OptionChoice do
 
     test "returns option choice" do
       user = insert(:account_user)
-      option_group = insert(:option_group, user: user)
-      option_choice = insert(:option_choice, option_group: option_group)
+      option_choice = insert(:option_choice)
 
       response =
         build_conn()
@@ -58,7 +55,7 @@ defmodule Escala.OptionChoice do
   describe "option choice mutation" do
     test "creates with valid attrs" do
       user = insert(:account_user)
-      option_group = insert(:option_group, user: user)
+      question = insert(:question)
 
       response =
         build_conn()
@@ -69,7 +66,7 @@ defmodule Escala.OptionChoice do
                input: %{
                  option_choice_name: "good",
                  option_choice_value: "5",
-                 option_group_id: option_group.id
+                 question_id: question.id
                }
              }
            )

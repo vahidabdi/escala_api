@@ -5,7 +5,7 @@ defmodule Escala.CMS.OptionChoice do
   use Ecto.Schema
   import Ecto.Changeset
   alias Escala.CMS.OptionChoice
-  alias Escala.CMS.OptionGroup
+  alias Escala.CMS.Question
   alias Escala.CMS.QuestionOption
 
   @primary_key {:id, Ecto.UUID, read_after_writes: true}
@@ -16,7 +16,7 @@ defmodule Escala.CMS.OptionChoice do
     field(:option_choice_name, :string)
     field(:option_choice_value, :string)
 
-    belongs_to(:option_group, OptionGroup)
+    belongs_to(:question, Question)
     has_many(:question_options, QuestionOption)
 
     timestamps()
@@ -25,8 +25,8 @@ defmodule Escala.CMS.OptionChoice do
   @doc false
   def changeset(%OptionChoice{} = option_choice, attrs) do
     option_choice
-    |> cast(attrs, [:option_choice_name, :option_choice_value, :option_group_id])
-    |> validate_required([:option_choice_name, :option_choice_value, :option_group_id])
-    |> foreign_key_constraint(:option_group_id)
+    |> cast(attrs, [:option_choice_name, :option_choice_value, :question_id])
+    |> validate_required([:option_choice_name, :option_choice_value, :question_id])
+    |> foreign_key_constraint(:question_id)
   end
 end

@@ -9,7 +9,6 @@ defmodule Escala.CMS do
   alias Ecto.UUID
   alias Escala.Repo
   alias Escala.CMS.Survey
-  alias Escala.CMS.OptionGroup
   alias Escala.CMS.OptionChoice
   alias Escala.CMS.InputType
   alias Escala.CMS.Question
@@ -72,27 +71,6 @@ defmodule Escala.CMS do
     survey
     |> Survey.changeset(attrs)
     |> Repo.update()
-  end
-
-  # OptionGroup
-
-  @doc """
-  creates option group
-  """
-  def create_option_group(attrs) do
-    %OptionGroup{}
-    |> OptionGroup.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
-  Get a option group
-  """
-  def get_option_group(id) do
-    case UUID.cast(id) do
-      {:ok, _} -> Repo.get(OptionGroup, id)
-      _ -> nil
-    end
   end
 
   # OptionChoice

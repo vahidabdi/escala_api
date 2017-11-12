@@ -5,7 +5,6 @@ defmodule Escala.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias Escala.Accounts.User
-  alias Escala.CMS.OptionGroup
 
   @primary_key {:id, Ecto.UUID, read_after_writes: true}
   @timestamps_opts [type: :utc_datetime, usec: false]
@@ -17,8 +16,6 @@ defmodule Escala.Accounts.User do
     field(:last_name, :string)
     field(:picture, :string)
     field(:providers, {:array, :string})
-
-    has_many(:option_groups, OptionGroup)
 
     timestamps()
   end

@@ -8,6 +8,7 @@ defmodule Escala.Repo.Migrations.CreateQuestions do
       add :question_subtext, :text
       add :answer_required, :boolean, default: false, null: false
       add :allow_multiple_option, :boolean, default: false, null: false
+      add :position, :integer, null: false
       add :input_type_id, references(:input_types, on_delete: :nothing, type: :uuid), null: false
       add :survey_id, references(:surveys, on_delete: :nothing, type: :uuid), null: false
 
@@ -16,5 +17,6 @@ defmodule Escala.Repo.Migrations.CreateQuestions do
 
     create index(:questions, [:input_type_id])
     create index(:questions, [:survey_id])
+    create unique_index(:questions, [:survey_id, :position], name: :unique_position)
   end
 end

@@ -6,6 +6,7 @@ defmodule Escala.Repo.Migrations.CreateOptionChoices do
       add :id, :uuid, primary_key: true, default: fragment("uuid_generate_v4()")
       add :option_choice_name, :text, null: false
       add :option_choice_value, :text, null: false
+      add :question_id, references(:questions, on_delete: :delete_all, type: :uuid), null: false
 
       timestamps(type: :timestamptz)
     end

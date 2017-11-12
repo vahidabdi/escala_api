@@ -5,14 +5,8 @@ defmodule Escala.CMSFactory do
     quote do
       def input_type_factory do
         %Escala.CMS.InputType{
-          name: "short text",
+          name: sequence(:name, &(&1)),
           has_option: false
-        }
-      end
-
-      def option_group_factory do
-        %Escala.CMS.OptionGroup{
-          name: "Rate 1-5"
         }
       end
 
@@ -20,7 +14,7 @@ defmodule Escala.CMSFactory do
         %Escala.CMS.OptionChoice{
           option_choice_name: "good",
           option_choice_value: "5",
-          option_group: build(:option_group, user: build(:account_user))
+          question: build(:question)
         }
       end
 

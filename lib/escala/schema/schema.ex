@@ -11,12 +11,6 @@ defmodule Escala.Schema do
       resolve(&Escala.Accounts.UserResolver.current_user/2)
     end
 
-    field :option_group, :option_group do
-      arg(:id, non_null(:id))
-
-      resolve(&Escala.CMS.OptionGroupResolver.find/2)
-    end
-
     field :option_choice, :option_choice do
       arg(:id, non_null(:id))
 
@@ -62,12 +56,6 @@ defmodule Escala.Schema do
       arg(:code, non_null(:string))
 
       resolve(&Escala.Accounts.UserResolver.login/2)
-    end
-
-    field :create_option_group, :option_group do
-      arg(:input, non_null(:option_group_input))
-
-      resolve(&Escala.CMS.OptionGroupResolver.create/2)
     end
 
     field :create_option_choice, :option_choice do

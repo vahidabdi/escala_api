@@ -12,8 +12,5 @@
 
 alias Escala.CMS.InputType
 
-Escala.Repo.insert!(%InputType{name: "پاسخ کوتاه"})
-Escala.Repo.insert!(%InputType{name: "پاسخ بلند"})
-Escala.Repo.insert!(%InputType{name: "تک انتخابی"})
-Escala.Repo.insert!(%InputType{name: "چند انتخابی"})
-Escala.Repo.insert!(%InputType{name: "امتیاز دهی"})
+Escala.Repo.insert!(%InputType{name: "پاسخ متنی", has_option: false})
+Escala.Repo.insert!(%InputType{name: "چند گزینه ای", has_option: true})
