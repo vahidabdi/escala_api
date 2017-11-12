@@ -66,7 +66,7 @@ defmodule Escala.QuestionResolverTest do
                  input_type_id: input_type.id,
                  question_text: "What's your name?",
                  survey_id: survey.id,
-                 position: 1,
+                 position: 1
                }
              }
            )

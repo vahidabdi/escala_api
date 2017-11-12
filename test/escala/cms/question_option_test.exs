@@ -5,7 +5,9 @@ defmodule Escala.CMS.QuestionOptionTest do
 
   describe "create_question_option" do
     test "with valid attributes returns new question option" do
-      question = insert(:question, input_type: build(:input_type, name: "multi", has_option: true))
+      question =
+        insert(:question, input_type: build(:input_type, name: "multi", has_option: true))
+
       option_choice = insert(:option_choice)
 
       attrs = %{question_id: question.id, option_choice_id: option_choice.id}
@@ -14,7 +16,9 @@ defmodule Escala.CMS.QuestionOptionTest do
 
     test "returns error when question input type accept no option" do
       # question factory by default creates input type with has_option: false
-      question = insert(:question, input_type: build(:input_type, name: "text", has_option: false))
+      question =
+        insert(:question, input_type: build(:input_type, name: "text", has_option: false))
+
       option_choice = insert(:option_choice)
 
       attrs = %{question_id: question.id, option_choice_id: option_choice.id}

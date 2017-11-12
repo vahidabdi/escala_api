@@ -16,7 +16,7 @@ defmodule Escala.CMS.QuestionTest do
           question_text: "what's your name?",
           survey_id: survey.id,
           input_type_id: input_type.id,
-          position: 1,
+          position: 1
         }
 
       assert {:ok, _question} = CMS.create_question(attrs)
@@ -84,7 +84,7 @@ defmodule Escala.CMS.QuestionTest do
         %{
           question_text: "What's your name?",
           survey_id: survey.id,
-          input_type_id: input_type.id,
+          input_type_id: input_type.id
         }
 
       assert {:error, changeset} = CMS.create_question(attrs)

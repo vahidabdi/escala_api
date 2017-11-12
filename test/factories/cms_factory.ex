@@ -5,7 +5,7 @@ defmodule Escala.CMSFactory do
     quote do
       def input_type_factory do
         %Escala.CMS.InputType{
-          name: sequence(:name, &(&1)),
+          name: sequence(:name, &"name#{&1}"),
           has_option: false
         }
       end
@@ -30,7 +30,7 @@ defmodule Escala.CMSFactory do
           question_text: "what's your name",
           input_type: build(:input_type),
           survey: build(:survey),
-          position: sequence(:position, &(&1))
+          position: sequence(:position, & &1)
         }
       end
     end
